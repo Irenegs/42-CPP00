@@ -1,5 +1,6 @@
 #include "PhoneBook.hpp"
 
+
 PhoneBook::PhoneBook()
 {
     size = 0;
@@ -23,10 +24,38 @@ int PhoneBook::AddContact()
 
 void PhoneBook::Search()
 {
-    cout << "search";
+    if ((*this).size == 0)
+    {
+        cout << "Phonebook is empty." << endl;
+        return ;
+    }
+    (*this).showContacts();
+    for (int i = 0; i < (*this).size; i++)
+        (*this).contacts[i].display();
+    int index = (*this).getIndex();
+    cout << "The contact information is" << endl;
+    (*this).contacts[index - 1].display();
 }
 
-void PhoneBook::SelectContact()
+int PhoneBook::getIndex()
 {
-    cout << "select";
+    cout << "Please, select a contact to display:" << endl;
+    char *str_index;
+    cin >> str_index;
+    cin.sync();
+    cout << "strlen_strindex: "<< strlen(str_index) << endl;
+    int index = atoi(str_index);
+    while (index <= 0 || index > size)
+    {
+        cout << "Please, choose a valid index: 1 to " << (*this).size << endl;
+        fgets(str_index, 4, stdin);
+        index = atoi(str_index);
+        cout << "Index:" << index << endl;
+    }
+    return (index);
+}
+
+void PhoneBook::showContacts()
+{
+    cout << "The contacts in the phonebook are:" << endl;
 }

@@ -11,8 +11,10 @@ class PhoneBook
     PhoneBook();
     int AddContact();
     void Search();
-    void SelectContact();
 
+  private:
+    int getIndex();
+    void showContacts();
 };
 
 #endif
